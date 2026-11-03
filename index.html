@@ -228,7 +228,7 @@ window.tripFallback="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAcF
   function renderChecks(){
     $('checklist').innerHTML=checks.map(([id,title,detail])=>`<label class="check-row"><input type="checkbox" data-check="${id}" ${state.checked.has(id)?'checked':''}><span class="check-visual" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></svg></span><span class="check-copy"><span>${title}</span><small>${detail}</small></span></label>`).join('');renderProgress();
   }
-  function renderProgress() { $('check-progress').textContent = `已经搞定 ${state.checked.size} / ${checks.length} 项。还差哪件，群里吼一声。`; }
+  function renderProgress() { $('check-progress').textContent = state.checked.size===checks.length ? '6件事都对上啦，安心出发！' : `已经搞定 ${state.checked.size} / ${checks.length} 项。还差哪件，群里吼一声。`; }
   function renderBase(saved=false) {
     $('base-input').value = state.base;
     $('base-status').textContent = state.base ? (saved?'存好了。':'上次存的定位还在。') + '这个定位只留在你手机里。' : '还没贴定位，先按西航这个片区认路。';
